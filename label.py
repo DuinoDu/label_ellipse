@@ -135,7 +135,7 @@ Object = """
 """
 
 
-def save():
+def save(annodir):
     global x0, y0, a, b, angle
     global filename
     global im
@@ -190,7 +190,15 @@ def label(argv):
     cv2.namedWindow('img')
     cv2.setMouseCallback('img', onmouse)
 
-    for f in imgfiles:
+    #for f in imgfiles:
+    while True:
+        img_ind = 0
+        if img_ind >= len(imgfiles):
+            print("Finish.")
+            break
+        img_ind = 0 if img_ind < 0 else img_ind
+
+        f = imgfiles[img_ind]
         print(f)
         filename = os.path.basename(f)[:-4]
         im = cv2.imread(f)
@@ -205,14 +213,19 @@ def label(argv):
             if ch == ord('q'):
                 break
             elif ch == ord('n'):
+                save(annodir)
                 clear()
+                img_ind += 1
+                break
+            elif ch == ord('b'):
+                save(annodir)
+                clear()
+                img_ind -= 1
                 break
             elif ch == ord('d'):
                 im = cv2.imread(f)
                 cv2.imshow('img', im)
                 clear()
-            elif ch == ord(' '):
-                save()
 
         if ch == ord('q'):
             break
