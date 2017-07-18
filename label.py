@@ -195,7 +195,9 @@ def label(argv):
         print(f)
         filename = os.path.basename(f)[:-4]
         im = cv2.imread(f)
-        load(os.path.join(annodir, '{}.xml'.format(filename)))
+        xmlfile = os.path.join(annodir, '{}.xml'.format(filename))
+        if os.path.exists(xmlfile):
+            load(xmlfile)
         #cv2.imshow('img', im)
 
         while True:
