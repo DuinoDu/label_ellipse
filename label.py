@@ -169,8 +169,7 @@ def load(xmlfile):
         b = int(bbox.find('b').text)
         angle = int(bbox.find('angle').text)
         cv2.ellipse(img,(x0,y0),(a, b), angle, 0,360, (0,255,255))
-
-
+    cv2.imshow('img', img)
 
 
 def label(argv):
@@ -198,7 +197,8 @@ def label(argv):
         xmlfile = os.path.join(annodir, '{}.xml'.format(filename))
         if os.path.exists(xmlfile):
             load(xmlfile)
-        #cv2.imshow('img', im)
+        else:
+            cv2.imshow('img', im)
 
         while True:
             ch = cv2.waitKey(0) & 0xff
