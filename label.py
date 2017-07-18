@@ -185,6 +185,7 @@ def label(argv):
     annodir = os.path.join(root, 'Annotations')
     if not os.path.exists(annodir):
         os.makedirs(annodir)
+    print('annodir:', annodir)
     
     global im
     global filename
