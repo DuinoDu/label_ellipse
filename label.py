@@ -153,7 +153,7 @@ def save(annodir):
         os.remove(xmlfile)
     with open(xmlfile, 'w') as fid:
         fid.write(newAnno)
-    print('Image No. {} saved.'.format(eval(filename)))
+    print('Image No. {} saved.'.format(filename))
     
 
 def load(xmlfile):
