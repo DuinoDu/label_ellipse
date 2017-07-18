@@ -152,9 +152,6 @@ def save(annodir):
     newAnno = copy.deepcopy(Annnotation).format(filename, width, height, newObj)
     xmlfile = os.path.join(annodir, '{}.xml'.format(filename))
 
-    print('annodir:', annodir)
-    print("xmlfile:", xmlfile)
-
     if os.path.exists(xmlfile):
         os.remove(xmlfile)
     with open(xmlfile, 'w') as fid:
@@ -202,8 +199,8 @@ def label(argv):
     cv2.setMouseCallback('img', onmouse)
 
     #for f in imgfiles:
+    img_ind = 0
     while True:
-        img_ind = 0
         if img_ind >= len(imgfiles):
             print("Finish.")
             break
