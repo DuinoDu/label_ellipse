@@ -5,6 +5,9 @@
 python check.py [voc-format ds path]
 '''
 import os, sys
+import cv2
+import numpy as np
+import xml.etree.ElementTree as ET
 
 
 def load(imgfile, xmlfile):
