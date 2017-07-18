@@ -41,6 +41,9 @@ def onmouse(event, x, y, flags, param):
         # click one
         if event == cv2.EVENT_LBUTTONDOWN:
             x1, y1 = x, y
+            x0, y0 = 0, 0
+            angle  = 0
+            a, b = 0, 0
         elif event == cv2.EVENT_LBUTTONUP:
             state = 1
 
@@ -85,6 +88,9 @@ def onmouse(event, x, y, flags, param):
         cv2.line(img, (x1, y1), (x2, y2), (0,255,0), 2)
         cv2.ellipse(img,(x0,y0),(a, b), angle, 0,360, (0,255,255))
 
+
+    if x0 != 0 and y0 != 0:
+        cv2.ellipse(img,(x0,y0),(a, b), angle, 0,360, (0,255,255))
     cv2.imshow('img', img)
 
 def clear():
