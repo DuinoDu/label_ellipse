@@ -144,6 +144,7 @@ def save(annodir):
     newObj = copy.deepcopy(Object).format(name, int(x0), int(y0), int(a), int(b), int(angle))
     newAnno = copy.deepcopy(Annnotation).format(filename, width, height, newObj)
     xmlfile = os.path.join(annodir, '/{}.xml'.format(filename))
+    print("xmlfile:", xmlfile)
     if os.path.exists(xmlfile):
         os.remove(xmlfile)
     with open(xmlfile, 'w') as fid:
