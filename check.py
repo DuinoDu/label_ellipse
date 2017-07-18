@@ -25,7 +25,7 @@ def load(imgfile, xmlfile, ind):
         b = int(bbox.find('b').text)
         angle = int(bbox.find('angle').text)
         cv2.ellipse(img,(x0,y0),(a, b), angle, 0,360, (0,255,255))
-    cv2.putText(img, str(ind), (10, 10), cv2.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 255), 2)
+    cv2.putText(img, str(ind), (20, 100), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 100, 255), 3)
     cv2.imshow('img', img)
     ch = cv2.waitKey(1000) & 0xff
 
