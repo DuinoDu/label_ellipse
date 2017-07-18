@@ -139,12 +139,16 @@ def save(annodir):
     global x0, y0, a, b, angle
     global filename
     global im
+
     height, width = im.shape[:2] 
     name = 'head'
     newObj = copy.deepcopy(Object).format(name, int(x0), int(y0), int(a), int(b), int(angle))
     newAnno = copy.deepcopy(Annnotation).format(filename, width, height, newObj)
-    xmlfile = os.path.join(annodir, '/{}.xml'.format(filename))
+    xmlfile = os.path.join(annodir, '{}.xml'.format(filename))
+
+    print('annodir:', annodir)
     print("xmlfile:", xmlfile)
+
     if os.path.exists(xmlfile):
         os.remove(xmlfile)
     with open(xmlfile, 'w') as fid:
@@ -185,7 +189,6 @@ def label(argv):
     annodir = os.path.join(root, 'Annotations')
     if not os.path.exists(annodir):
         os.makedirs(annodir)
-    print('annodir:', annodir)
     
     global im
     global filename
