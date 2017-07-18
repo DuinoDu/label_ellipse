@@ -27,7 +27,7 @@ def load(imgfile, xmlfile, ind):
         cv2.ellipse(img,(x0,y0),(a, b), angle, 0,360, (0,255,255))
     cv2.putText(img, str(ind), (20, 100), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 100, 255), 3)
     cv2.imshow('img', img)
-    ch = cv2.waitKey(1000) & 0xff
+    ch = cv2.waitKey(2000) & 0xff
 
 
 def check(argv):
@@ -40,7 +40,7 @@ def check(argv):
     for ind in range(len(xmlfiles)):
         imgfile = imgfiles[ind]
         xmlfile = xmlfiles[ind]
-        load(imgfile, xmlfile, ind)
+        load(imgfile, xmlfile, ind+1)
 
 
 def main():
