@@ -10,7 +10,7 @@ import numpy as np
 import xml.etree.ElementTree as ET
 
 
-def load(imgfile, xmlfile):
+def load(imgfile, xmlfile, ind):
     img = cv2.imread(imgfile)
     tree = ET.parse(xmlfile)
     width = int(tree.find('size').find('width').text)
@@ -25,6 +25,7 @@ def load(imgfile, xmlfile):
         b = int(bbox.find('b').text)
         angle = int(bbox.find('angle').text)
         cv2.ellipse(img,(x0,y0),(a, b), angle, 0,360, (0,255,255))
+    cv2.puttext(img, str(ind), (10, 10), cv2.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 255), 2)
     cv2.imshow('img', img)
     ch = cv2.waitKey(1000) & 0xff
 
@@ -39,7 +40,7 @@ def check(argv):
     for ind in range(len(xmlfiles)):
         imgfile = imgfiles[ind]
         xmlfile = xmlfiles[ind]
-        load(imgfile, xmlfile)
+        load(imgfile, xmlfile, ind)
 
 
 def main():
