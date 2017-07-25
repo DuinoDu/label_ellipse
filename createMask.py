@@ -3,11 +3,13 @@
 
 '''
 python createmask.py [voc-like dir]
+
 '''
 import os, sys
 import numpy as np
 import cv2
 import xml.etree.ElementTree as ET
+
 
 def parsexml(xmlfile):
     tree = ET.parse(xmlfile)
@@ -46,15 +48,18 @@ def createmask(argv):
         img_mask = cv2.bitwise_xor(img1, img2)
 
         
-        img = cv2.imread(os.path.join(jpegdir, xmlfile[-10:-4] + '.jpg'))
-        img = cv2.bitwise_and(img, img, mask=img_mask)
+        # vis mask
+        #img = cv2.imread(os.path.join(jpegdir, xmlfile[-10:-4] + '.jpg'))
+        #img = cv2.bitwise_and(img, img, mask=img_mask)
 
-        cv2.imshow('img', img)
+        #cv2.imshow('img', img)
 
-        ch = cv2.waitKey(0) & 0xff
-        if ch == 27: #ord('q')
-            break
+        #ch = cv2.waitKey(0) & 0xff
+        #if ch == 27: #ord('q')
+        #    break
 
+        # save mask
+        cv2.imwrite(os.path.join(maskdir, xmlfile[-10:-4] + '.jpg'), img_mask)
 
 
 
