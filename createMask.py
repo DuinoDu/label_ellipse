@@ -38,7 +38,7 @@ def createmask(argv):
         w, h, x, y, a, b, angle = parsexml(xmlfile)
         img = np.zeros(shape=(h, w, 1))
         delta = 4
-        cv2.ellipse(img, (x, y), (a-delta, b-delta), anble, 0, 360, 255, -1)
+        cv2.ellipse(img, (x, y), (a-delta, b-delta), angle, 0, 360, 255, -1)
         cv2.imshow(img)
         cv2.waitKey(0)
         return
