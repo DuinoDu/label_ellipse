@@ -7,6 +7,7 @@ python createmask.py [voc-like dir]
 import os, sys
 import numpy as np
 import cv2
+import xml.etree.ElementTree as ET
 
 def parsexml(xmlfile):
     tree = ET.parse(xmlfile)
