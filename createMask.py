@@ -17,8 +17,8 @@ def parsexml(xmlfile):
     for index, obj in enumerate(objs):
         name = obj.find('name').text.lower()
         bbox = obj.find('bndbox')
-        x0 = int(bbox.find('x').text)
-        y0 = int(bbox.find('y').text)
+        x = int(bbox.find('x').text)
+        y = int(bbox.find('y').text)
         a = int(bbox.find('a').text)
         b = int(bbox.find('b').text)
         angle = int(bbox.find('angle').text)
