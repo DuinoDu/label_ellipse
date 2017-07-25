@@ -26,7 +26,7 @@ def parsexml(xmlfile):
 
 
 def createmask(argv):
-    root = os.path.abspath(argv[0])
+    root = os.path.abspath(argv[1])
     annodir = os.path.join(root, 'Annotations')
     maskdir = os.path.join(root, 'JPEGImagesMask')
     if not os.path.exists(maskdir):
