@@ -39,9 +39,9 @@ def createmask(argv):
         w, h, x, y, a, b, angle = parsexml(xmlfile)
         delta = 10
 
-        img1 = np.zeros(shape=(h, w, 1))
+        img1 = np.zeros(shape=(h, w, 1), dtype=np.uint8)
         cv2.ellipse(img1, (x, y), (a-delta, b-delta), angle, 0, 360, 255, -1)
-        img2 = np.zeros(shape=(h, w, 1))
+        img2 = np.zeros(shape=(h, w, 1), dtype=np.uint8)
         cv2.ellipse(img2, (x, y), (a+delta, b+delta), angle, 0, 360, 255, -1)
         img_mask = cv2.bitwise_xor(img1, img2)
 
