@@ -36,9 +36,16 @@ def createmask(argv):
     
     for xmlfile in annofiles:
         w, h, x, y, a, b, angle = parsexml(xmlfile)
-        img = np.zeros(shape=(h, w, 1))
         delta = 4
-        cv2.ellipse(img, (x, y), (a-delta, b-delta), angle, 0, 360, 255, -1)
+
+        img1 = np.zeros(shape=(h, w, 1))
+        cv2.ellipse(img1, (x, y), (a-delta, b-delta), angle, 0, 360, 255, -1)
+
+        img2 = np.zeros(shape=(h, w, 1))
+        cv2.ellipse(img2, (x, y), (a+delta, b+delta), angle, 0, 360, 255, -1)
+
+        img = cv2.bitwise_xor(img1, img2)
+
         cv2.imshow('img', img)
         cv2.waitKey(0)
         return
