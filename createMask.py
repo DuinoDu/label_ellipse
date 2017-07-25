@@ -26,8 +26,9 @@ def parsexml(xmlfile):
 
 
 def createmask(argv):
-    annodir = os.path.join(argv[0], 'Annotations')
-    maskdir = os.path.join(argv[0], 'JPEGImagesMask')
+    root = os.path.abspath(argv[0])
+    annodir = os.path.join(root, 'Annotations')
+    maskdir = os.path.join(root, 'JPEGImagesMask')
     if not os.path.exists(maskdir):
         os.makedirs(maskdir)
     annofiles = sorted([os.path.join(annodir, x) for x in sorted(os.listdir(annodir)) if x.endswith('.xml')])
