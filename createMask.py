@@ -29,6 +29,7 @@ def parsexml(xmlfile):
 def createmask(argv):
     root = os.path.abspath(argv[1])
     annodir = os.path.join(root, 'Annotations')
+    jpegdir = os.path.join(root, 'JPEGImages')
     maskdir = os.path.join(root, 'JPEGImagesMask')
     if not os.path.exists(maskdir):
         os.makedirs(maskdir)
@@ -36,15 +37,17 @@ def createmask(argv):
     
     for xmlfile in annofiles:
         w, h, x, y, a, b, angle = parsexml(xmlfile)
-        delta = 6
+        delta = 10
 
         img1 = np.zeros(shape=(h, w, 1))
         cv2.ellipse(img1, (x, y), (a-delta, b-delta), angle, 0, 360, 255, -1)
-
         img2 = np.zeros(shape=(h, w, 1))
         cv2.ellipse(img2, (x, y), (a+delta, b+delta), angle, 0, 360, 255, -1)
+        img_mask = cv2.bitwise_xor(img1, img2)
 
-        img = cv2.bitwise_xor(img1, img2)
+        
+        img = cv2.imread(os.path.join(jpegdir, xmlfile[-10:-4] + '.jpg'))
+        img = cv2.bitwise_and(img, img, mask=img_mask)
 
         cv2.imshow('img', img)
         cv2.waitKey(0)
