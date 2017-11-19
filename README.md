@@ -1,16 +1,26 @@
-# label_ellipse
-A tool to label direction of object
+## labelme_opencv
+Simple image label tool using python and opencv.
 
-# Usage
-### start to label
-```
-python label.py -h
-```
-You will know what to do next.
+##Usage:
 
+### Step 0
+Prepare data. Copy **.JPG into ./image folder
 
-### check labels [TODO]
-```
-python check.py -h
-```
-Again, you will know what to do next.
+### Step 1
+python splitData.py [number]
+
+number is {0,1,2,3}
+
+### Step 2
+
+python labelme.py
+
+1. Select rectangle using mouse.
+2. Keyboard: "Space" ->  finish one rectangle
+3. Keyboard: "d"     ->  delete rectangles
+4. Keyboard: "Enter" ->  finish one image, write annotation into txt, and next.
+5. Keyboard: "Esc"   ->  exit
+
+### Step 3
+
+python checkLabel.py
