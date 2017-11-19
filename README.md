@@ -1,16 +1,16 @@
 # label_ellipse
-A tool to label ellipse object
+A tool to label direction of object
 
 # Usage
 ### start to label
 ```
-python label.py
+python label.py -h
 ```
 You will know what to do next.
 
 
-### check labels
+### check labels [TODO]
 ```
-python check.py
+python check.py -h
 ```
 Again, you will know what to do next.
